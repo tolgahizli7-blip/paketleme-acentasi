@@ -8,60 +8,6 @@
 </head>
 <body>
     <div id="root"></div>
-
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <script>
-        const { useState, createElement: e } = window.React;
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-
-        function PaketlemeAcentasi() {
-            const [openFaq, setOpenFaq] = useState(null);
-            const [formData, setFormData] = useState({ ad: '', soyad: '', telefon: '', adres: '' });
-
-            const handleFormChange = (event) => {
-                const { name, value } = event.target;
-                setFormData(prev => ({ ...prev, [name]: value }));
-            };
-
-            const handleSubmit = (event) => {
-                event.preventDefault();
-                const message = `Merhaba, ben ${formData.ad} ${formData.soyad}. Telefon: ${formData.telefon}, Adres: ${formData.adres}`;
-                const whatsappUrl = `https://wa.me/905541735313?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
-            };
-
-            const faqItems = [
-                { q: "Hangi illere gönderim yapıyorsunuz?", a: "Türkiye'nin 81 iline ve tüm ilçelerine kargo ağımız sayesinde ücretsiz gönderim sağlamaktayız." },
-                { q: "Kargo ücretini ben mi ödeyeceğim?", a: "Kesinlikle hayır. Ürünlerin size gelişi ve bizlere dönüşü sırasındaki tüm kargo masrafları firmamıza aittir." },
-                { q: "Teminat parasını nasıl geri alırım?", a: "Teminat bedeli, ilk iş tesliminizde kazancınıza eklenerek İADE EDİLİR. Hiçbir şekilde eksi bakiye kalmayacaktır." },
-                { q: "İşe başlamak için kaç gün sürer?", a: "Başvurunuz onaylandıktan sonra 3-5 gün içinde malzemeleri kapınıza göndeririz ve hemen çalışmaya başlayabilirsiniz." }
-            ];
-
-            return e('div', { className: 'min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50' },
-                e('a', { href: 'https://wa.me/905541735313?text=Merhaba,%20paketleme%20acentası%20hakkında%20bilgi%20almak%20istiyorum', target: '_blank', rel: 'noopener noreferrer', className: 'fixed bottom-8 right-8 z-40 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition transform hover:scale-110', style: { animation: 'bounce 2s infinite' }, title: 'WhatsApp ile iletişime geç' }, '💬'),
-                
-                e('nav', { className: 'fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-blue-100 shadow-sm' },
-                    e('div', { className: 'max-w-6xl mx-auto px-4 py-4 flex justify-between items-center' },
-                        e('div', { className: 'text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent' }, '📦 Paketleme Acentası'),
-                        e('div', { className: 'hidden md:flex gap-8 text-sm font-medium' },
-                            e('button', { onClick: () => document.getElementById('nasil-calisir').scrollIntoView({ behavior: 'smooth' }), className: 'hover:text-blue-600 transition cursor-pointer bg-transparent border-none p-0' }, 'Nasıl Çalışır?'),
-                            e('button', { onClick: () => document.getElementById('guvence').scrollIntoView({ behavior: 'smooth' }), className: 'hover:text-blue-600 transition cursor-pointer bg-transparent border-none p-0' }, 'Güvencemiz'),
-                            e('button', { onClick: () => document.getElementById('sss').scrollIntoView({ behavior: 'smooth' }), className: 'hover:text-blue-600 transition cursor-pointer bg-transparent border-none p-0' }, 'S.S.S'),
-                            e('button', { onClick: () => document.getElementById('basvuru').scrollIntoView({ behavior: 'smooth' }), className: 'hover:text-blue-600 transition cursor-pointer bg-transparent border-none p-0' }, 'Başvuru')
-                        )
-                    )
-                ),
-
-                e('section', { className: 'pt-32 pb-20 px-4 text-center relative overflow-hidden' },
-                    e('div', { className: 'absolute inset-0 bg-gradient-to-b from-blue-100/30 to-transparent -z-10' }),
-                    e('div', { className: 'max-w-3xl mx-auto' },
-                        e('h1', { className: 'text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 bg-clip-text text-transparent leading-tight' }, 'Evinizden Çıkmadan Ek Gelir Kazanın'),
-                        e('p', { className: 'text-xl text-gray-600 mb-8 leading-relaxed' }, 'Boş vaktinizi kazanca dönüştürün! Anlaşmalı kargolarımızla çorap paketleme işini evinize getiriyoruz.'),
-                        e('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center mb-12' },
-                            e('button', { onClick: () => document.getElementById('basvuru').scrollIntoView({ behavior: 'smooth' }), className: 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:shadow-xl transition transform hover:scale-105 cursor-pointer' }, '🚀 Hemen Başvuru Yap'),
-                            e('button', { onClick: () => document.getElementById('nasil-calisir').scrollIntoView({ behavior: 'smooth' }), className: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold transition cursor-pointer bg-white' }, 'Süreci İncele')
-                        ),
-                        e('div', { className: 'grid grid-cols-3 gap-4 md:gap-8 mt-16' },
-                            e('div', { className: 'bg-whit
+    <script type="module" src="/src/App.jsx"></script>
+</body>
+</html>
