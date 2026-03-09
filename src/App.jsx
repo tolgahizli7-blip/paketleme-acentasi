@@ -1,0 +1,373 @@
+import React, { useState } from 'react';
+import { ChevronDown, CheckCircle, MessageCircle, MapPin, Phone, Instagram } from 'lucide-react';
+
+export default function PaketlemeAcentasi() {
+  const [openFaq, setOpenFaq] = useState(null);
+  const [formData, setFormData] = useState({
+    ad: '',
+    soyad: '',
+    telefon: '',
+    adres: ''
+  });
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const message = `Merhaba, ben ${formData.ad} ${formData.soyad}. Telefon: ${formData.telefon}, Adres: ${formData.adres}`;
+    const whatsappUrl = `https://wa.me/905541735313?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const faqItems = [
+    {
+      q: "Hangi illere gönderim yapıyorsunuz?",
+      a: "Türkiye'nin 81 iline ve tüm ilçelerine kargo ağımız sayesinde ücretsiz gönderim sağlamaktayız."
+    },
+    {
+      q: "Kargo ücretini ben mi ödeyeceğim?",
+      a: "Kesinlikle hayır. Ürünlerin size gelişi ve bizlere dönüşü sırasındaki tüm kargo masrafları firmamıza aittir."
+    },
+    {
+      q: "Teminat parasını nasıl geri alırım?",
+      a: "Teminat bedeli, ilk iş tesliminizde kazancınıza eklenerek İADE EDİLİR. Hiçbir şekilde eksi bakiye kalmayacaktır."
+    },
+    {
+      q: "İşe başlamak için kaç gün sürer?",
+      a: "Başvurunuz onaylandıktan sonra 3-5 gün içinde malzemeleri kapınıza göndeririz ve hemen çalışmaya başlayabilirsiniz."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/905541735313?text=Merhaba,%20paketleme%20acentası%20hakkında%20bilgi%20almak%20istiyorum"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 z-40 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl animate-bounce transition transform hover:scale-110"
+        title="WhatsApp ile iletişime geç"
+      >
+        <MessageCircle className="w-6 h-6" />
+      </a>
+
+      {/* Navigation */}
+      <nav className="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-blue-100 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            📦 Paketleme Acentası
+          </div>
+          <div className="hidden md:flex gap-8 text-sm font-medium">
+            <button onClick={() => document.getElementById('nasil-calisir').scrollIntoView({ behavior: 'smooth' })} className="hover:text-blue-600 transition cursor-pointer bg-transparent border-none p-0">Nasıl Çalışır?</button>
+            <button onClick={() => document.getElementById('guvence').scrollIntoView({ behavior: 'smooth' })} className="hover:text-blue-600 transition cursor-pointer bg-transparent border-none p-0">Güvencemiz</button>
+            <button onClick={() => document.getElementById('sss').scrollIntoView({ behavior: 'smooth' })} className="hover:text-blue-600 transition cursor-pointer bg-transparent border-none p-0">S.S.S</button>
+            <button onClick={() => document.getElementById('basvuru').scrollIntoView({ behavior: 'smooth' })} className="hover:text-blue-600 transition cursor-pointer bg-transparent border-none p-0">Başvuru</button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-100/30 to-transparent -z-10"></div>
+        
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 bg-clip-text text-transparent leading-tight">
+            Evinizden Çıkmadan Ek Gelir Kazanın
+          </h1>
+          
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            Boş vaktinizi kazanca dönüştürün! Anlaşmalı kargolarımızla çorap paketleme işini evinize getiriyoruz.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <button 
+              onClick={() => document.getElementById('basvuru').scrollIntoView({ behavior: 'smooth' })}
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:shadow-xl transition transform hover:scale-105 cursor-pointer"
+            >
+              🚀 Hemen Başvuru Yap
+            </button>
+            <button 
+              onClick={() => document.getElementById('nasil-calisir').scrollIntoView({ behavior: 'smooth' })}
+              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg font-semibold transition cursor-pointer bg-white"
+            >
+              Süreci İncele
+            </button>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 md:gap-8 mt-16">
+            <div className="bg-white/80 backdrop-blur p-4 md:p-6 rounded-xl border border-blue-100">
+              <div className="text-3xl font-bold text-blue-600 mb-2">81 İL</div>
+              <div className="text-sm text-gray-600 font-medium">Kargo Ağı</div>
+            </div>
+            <div className="bg-white/80 backdrop-blur p-4 md:p-6 rounded-xl border border-blue-100">
+              <div className="text-3xl font-bold text-blue-600 mb-2">%100</div>
+              <div className="text-sm text-gray-600 font-medium">Devlet Onaylı</div>
+            </div>
+            <div className="bg-white/80 backdrop-blur p-4 md:p-6 rounded-xl border border-blue-100">
+              <div className="text-3xl font-bold text-blue-600 mb-2">⚡</div>
+              <div className="text-sm text-gray-600 font-medium">Aynı Gün Ödeme</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="nasil-calisir" className="py-20 px-4 bg-white/60 backdrop-blur">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
+            Süreç Çok Basit
+          </h2>
+          <p className="text-center text-gray-600 mb-16 text-lg">
+            Sadece 3 adımda başlayın - hiçbir tecrübe gerektirmez
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: 1,
+                title: "Başvuru Formu",
+                desc: "Aşağıdaki formu eksiksiz doldurarak bilgilerinizi bize iletin."
+              },
+              {
+                step: 2,
+                title: "Ücretsiz Teslimat",
+                desc: "Çoraplar ve paketleme malzemeleri kapınıza kadar getirilir."
+              },
+              {
+                step: 3,
+                title: "Paketle & Kazan",
+                desc: "Ürünleri paketleyip teslim edin, kazancınız anında hesabınıza yatsın."
+              }
+            ].map((item) => (
+              <div key={item.step} className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-50 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                <div className="relative bg-white border-2 border-blue-100 rounded-2xl p-8 hover:border-blue-300 transition">
+                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
+                {item.step < 3 && (
+                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-400 to-transparent"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section id="guvence" className="py-20 px-4 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
+            Kurumsal & Devlet Onaylı
+          </h2>
+          <p className="text-center text-blue-100 mb-16 text-lg max-w-2xl mx-auto">
+            Güveniniz bizim için her şeyden önemlidir. Kurumsal ve devlet onaylı işletmemizle tüm sürecimiz yasal güvence altındadır.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white/10 backdrop-blur border border-white/20 rounded-xl p-8">
+              <div className="text-3xl mb-4">📱</div>
+              <h3 className="text-2xl font-bold mb-3">Mavi Tikli Hesap</h3>
+              <p className="text-blue-100 leading-relaxed">
+                Instagram'daki Mavi Tik rozetimiz, Meta tarafından resmi belgelerimiz incelenerek verilmiş onaydır. Bu, biz kurumsal bir işletme olduğumuzu kanıtlar.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur border border-white/20 rounded-xl p-8">
+              <div className="text-3xl mb-4">🛡️</div>
+              <h3 className="text-2xl font-bold mb-3">Kargo Güvenlik Teminatı</h3>
+              <p className="text-blue-100 leading-relaxed">
+                Tüm kargo masrafları firmamız tarafından karşılanmaktadır. Teminat bedeli ilk iş tesliminizde kazancınıza eklenerek <span className="font-bold">İADE EDİLİR</span>.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 bg-white/5 border border-white/10 rounded-xl p-8 text-center">
+            <p className="text-blue-100 italic text-lg mb-4">
+              "Tuğba Hanım'dan Allah razı olsun, onun sayesinde ev geçindiriyorum. Güven konusunda şüpheniz olmasın..."
+            </p>
+            <p className="text-white font-semibold">⭐ Ayşe H. - Çalışanımız</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="sss" className="py-20 px-4 bg-gray-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">
+            Sıkça Sorulan Sorular
+          </h2>
+          <p className="text-center text-gray-600 mb-12">
+            Aklınıza takılan soruların cevapları burada
+          </p>
+
+          <div className="space-y-4">
+            {faqItems.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-blue-300 transition"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full px-6 py-4 flex justify-between items-center hover:bg-blue-50 transition"
+                >
+                  <span className="font-semibold text-gray-900 text-left">{item.q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-blue-600 transition-transform ${
+                      openFaq === idx ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-6 py-4 bg-blue-50 border-t border-gray-200">
+                    <p className="text-gray-700 leading-relaxed">{item.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Form Section */}
+      <section id="basvuru" className="py-20 px-4 bg-gradient-to-br from-blue-50 to-white">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">
+            Hemen Başvuru Yapın
+          </h2>
+          <p className="text-center text-gray-600 mb-12">
+            Bilgilerinizi doldurun, müşteri temsilcimiz WhatsApp üzerinden sizinle iletişime geçsin
+          </p>
+
+          <form onSubmit={handleSubmit} className="bg-white border-2 border-blue-100 rounded-2xl p-8 shadow-lg">
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <input
+                type="text"
+                name="ad"
+                placeholder="Adınız"
+                value={formData.ad}
+                onChange={handleFormChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+              <input
+                type="text"
+                name="soyad"
+                placeholder="Soyadınız"
+                value={formData.soyad}
+                onChange={handleFormChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <div className="mb-6">
+              <input
+                type="tel"
+                name="telefon"
+                placeholder="Telefon Numaranız"
+                value={formData.telefon}
+                onChange={handleFormChange}
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+
+            <div className="mb-6">
+              <textarea
+                name="adres"
+                placeholder="Açık Adresiniz"
+                value={formData.adres}
+                onChange={handleFormChange}
+                required
+                rows="4"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+              ></textarea>
+            </div>
+
+            <div className="mb-6 flex items-start gap-3 text-sm text-gray-600">
+              <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <p>Aynı gün dönüş garantisi</p>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 rounded-lg transition transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp'tan Başvur
+            </button>
+
+            <p className="text-xs text-gray-500 text-center mt-4">
+              * Verileriniz KVKK kapsamında korunmaktadır.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-12 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h4 className="text-white font-bold mb-4 text-lg">Paketleme Acentası</h4>
+              <p className="text-sm leading-relaxed">
+                Türkiye'nin her köşesine ek gelir fırsatı ulaştıran, mavi tikli ve güvenilir paketleme çözüm ortağınız.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">Hızlı Menü</h4>
+              <ul className="space-y-2 text-sm">
+                <li><button onClick={() => document.getElementById('nasil-calisir').scrollIntoView({ behavior: 'smooth' })} className="hover:text-blue-400 transition cursor-pointer bg-transparent border-none p-0">Nasıl Çalışır?</button></li>
+                <li><button onClick={() => document.getElementById('basvuru').scrollIntoView({ behavior: 'smooth' })} className="hover:text-blue-400 transition cursor-pointer bg-transparent border-none p-0">Başvuru Formu</button></li>
+                <li><button onClick={() => document.getElementById('sss').scrollIntoView({ behavior: 'smooth' })} className="hover:text-blue-400 transition cursor-pointer bg-transparent border-none p-0">Sıkça Sorulan Sorular</button></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-bold mb-4">İletişim</h4>
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  <span>Büyükçekmece/İstanbul</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  <a href="tel:+905541735313" className="hover:text-green-400 transition">
+                    0554 173 53 13
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4 text-green-400" />
+                  <a 
+                    href="https://wa.me/905541735313?text=Merhaba,%20paketleme%20acentası%20hakkında%20bilgi%20almak%20istiyorum" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-green-400 transition"
+                  >
+                    WhatsApp Yaz
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Instagram className="w-4 h-4" />
+                  <span>@tugbapaketlemeacentam</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-700 pt-8 text-center text-sm">
+            <p>© 2024 Paketleme Acentası. Tüm hakları saklıdır.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
